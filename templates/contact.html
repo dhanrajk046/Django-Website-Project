@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-4">
+  <h1 class="text-center">Contact Us</h1>
+
+  <div class="container">
+    <img
+      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+      class="w-100 rounded shadow mb-5"
+      style="height: 60vh; object-fit: cover;"
+      alt="Contact Us"
+    />
+
+    <p>
+      If you have any questions or would like to get in touch with us,
+      please fill out the form below:
+    </p>
+
+    <!-- SINGLE FORM ONLY (Correct) -->
+    <form method="POST" action="/contact/">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" />
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" />
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone" />
+      </div>
+
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          id="desc"
+          name="desc"
+          rows="4"
+        ></textarea>
+      </div>
+
+      {% comment %} <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input
+          type="text"
+          class="form-control"
+          id="date"
+          name="date"
+          value="{{ datetime.now|date:'Y-m-d' }}"
+          readonly
+        />
+      </div> {% endcomment %}
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h2 class="mt-5">Contact Information</h2>
+    <p class="mt-4">
+      <strong>Address:</strong> 123 Ice Cream Lane, Sweet City, Country
+    </p>
+    <p>
+      <strong>Phone:</strong> +1 (555) 123-456
+    </p>
+  </div>
+</div>
+
+{% endblock body %}
